@@ -22,7 +22,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth.requestMatchers("Admin").hasRole("ADMIN")
                         .anyRequest().permitAll()
                 )
-                .formLogin(form -> form.loginPage("/login"));
+                .formLogin(form -> form.loginPage("/login").permitAll()
+                )
+                .logout(logout -> logout.permitAll());
         return http.build();
 
     }
